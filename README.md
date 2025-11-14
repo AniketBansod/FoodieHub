@@ -16,7 +16,7 @@ Swiggy‑style food discovery app — React frontend + Express API with cached m
 [![License](https://img.shields.io/github/license/AniketBansod/FoodieHub)](./LICENSE)
 
 <p>
-  <a href="https://foodiehub-ua2d.onrender.com/" target="_blank"><b>Live Demo</b> → foodiehub-ua2d.onrender.com</a>
+  <a href="https://foodiehub-ua2d.onrender.com/" target="_blank"><b>Live Link</b> → foodiehub-ua2d.onrender.com</a>
 </p>
 
 </div>
@@ -216,7 +216,7 @@ Render (recommended)
     ```
   - Publish directory: `dist/`
 
-Live: https://foodiehub-ua2d.onrender.com/
+Live link: https://foodiehub-ua2d.onrender.com/
 
 ## 🧠 Future Improvements
 
