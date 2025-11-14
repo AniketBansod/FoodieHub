@@ -36,7 +36,7 @@ Swiggy‑style food discovery app — React frontend + Express API with cached m
 High‑level overview of the system:
 
 - Technologies: React + React Router + Redux Toolkit, Tailwind CSS, Express + Node, MongoDB, Axios, Helmet, express‑rate‑limit, NodeCache, Parcel bundler.
-- Interaction: The frontend calls a small Express backend that proxies Swiggy endpoints, adds caching and CORS handling, and stores user data in MongoDB.
+- Interaction: The frontend calls a Express backend that proxies Swiggy endpoints, adds caching and CORS handling, and stores user data in MongoDB.
 - Persistence: MongoDB collections store `users`, `favorites`, and `recentlyViewed` items.
 - Security: JWT for protected routes, Helmet for headers, CORS control, and basic rate limiting.
 
@@ -45,10 +45,10 @@ High‑level overview of the system:
 │            React Frontend          │        │      MongoDB         │
 │  (Parcel build, Tailwind UI)       │        │  users/favorites/RV  │
 └───────────────┬────────────────────┘        └──────────┬───────────┘
-                │  HTTPS (API_BASE_URL)                   │
-                ▼                                         │
-        ┌───────────────────────────┐                      │
-        │        Express API        │◄──── JWT ───────────┘
+                │  HTTPS (API_BASE_URL)                  │
+                ▼                                        │
+        ┌───────────────────────────┐                    │
+        │        Express API        │◄──── JWT ──────────┘
         │  helmet, cors, rate-limit │
         │  cache(proxy→Swiggy)      │
         └──────────┬────────────────┘
@@ -135,9 +135,6 @@ MONGODB_DB=foodiehub         # optional database name
 JWT_SECRET=please-change     # required in production
 JWT_EXPIRES_IN=7d            # token expiry
 CACHE_TTL=300                # seconds; cache for proxy endpoints
-SWIGGY_DEFAULT_LAT=          # optional default coordinates
-SWIGGY_DEFAULT_LNG=
-```
 
 Frontend (build‑time env at repo root):
 
@@ -221,7 +218,6 @@ Live link: https://foodiehub-ua2d.onrender.com/
 
 - Replace in‑memory cache with Redis for multi‑instance deployments.
 - Add e2e tests and CI pipeline.
-- Improve accessibility and add keyboard navigation.
 - Add pagination and sorting for lists.
 - Add user profile and social sign‑in (OAuth).
 - Add orders/cart backend and payment integration (demo mode).
