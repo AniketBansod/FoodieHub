@@ -105,7 +105,6 @@ $env:API_BASE_URL="http://localhost:8080"; npm start
     ```
   - Serve the static `dist/` directory (any static host). Backend runs with `cd backend; npm start`.
 
-> Docker: No Dockerfile in repo. If you want one, open an issue and we can add it.
 
 ## 🔍 Usage
 
@@ -226,7 +225,6 @@ Live link: https://foodiehub-ua2d.onrender.com/
 - Add pagination and sorting for lists.
 - Add user profile and social sign‑in (OAuth).
 - Add orders/cart backend and payment integration (demo mode).
-- Add Docker files for local/dev parity.
 
 ## 📝 License
 
