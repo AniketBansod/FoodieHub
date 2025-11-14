@@ -9,6 +9,20 @@ export const LONGITUDE = 77.02618695368315;
 // When deploying, set API_BASE_URL at build time (Parcel inlines process.env)
 // For local dev, fall back to local backend if not provided.
 const DEV_API = "http://localhost:8080";
-export const API_BASE_URL =
-  process.env.API_BASE_URL || (process.env.NODE_ENV !== "production" ? DEV_API : "");
+
+function sanitizeBase(v) {
+  if (!v) return "";
+  // Trim and remove surrounding quotes if env accidentally set to "" or ''
+  let s = String(v).trim().replace(/^['"]|['"]$/g, "");
+  // Remove trailing slashes
+  s = s.replace(/\/+$/, "");
+  return s;
+}
+
+export const API_BASE_URL = (function () {
+  const raw = process.env.API_BASE_URL;
+  const cleaned = sanitizeBase(raw);
+  if (cleaned) return cleaned;
+  return process.env.NODE_ENV !== "production" ? DEV_API : "";
+})();
 

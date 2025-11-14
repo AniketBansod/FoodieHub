@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { API_BASE_URL } from "../config";
-import { setAuth } from "../utils/auth";
+import { setAuth, apiFetch } from "../utils/auth";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -19,19 +18,13 @@ const Signup = () => {
       setMsg("Please fill all fields");
       return;
     }
-    if (!API_BASE_URL) {
-      setMsg("API_BASE_URL not configured");
-      return;
-    }
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE_URL}/api/auth/signup`, {
+      const data = await apiFetch(`/api/auth/signup`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: { name, email, password },
       });
-      const data = await res.json();
-      if (!res.ok || !data?.ok) throw new Error(data?.error || "Signup failed");
+      if (!data?.ok) throw new Error(data?.error || "Signup failed");
       setAuth(data.token, data.user);
       navigate(next);
     } catch (err) {
